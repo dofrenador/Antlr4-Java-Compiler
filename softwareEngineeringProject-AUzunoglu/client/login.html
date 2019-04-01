@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-signin-client_id" content="1062776272507-cu3jrfvoh587svb9qrifs7fqkhhsc5rq.apps.googleusercontent.com">
+  <title>Log in Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+  <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <link rel="stylesheet" type="text/css" href="css\style.css">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+<body>
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+<a href="#" onclick="signOut();">Sign out</a>
+<script>
+	function onSignIn(googleUser) {
+	  var profile = googleUser.getBasicProfile();
+	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  console.log('Name: ' + profile.getName());
+	  console.log('Image URL: ' + profile.getImageUrl());
+	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	}
+
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
+
+<form id="login" action="main.html">
+<div class="modal-dialog text-center">
+    <div class="col-sm-8 main-section">
+        <div class="modal-content">
+            <div class="col-12 user-img">
+                <img src="css\images\icon2.png">
+            </div>
+            <form class="col-12">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter Username">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Enter Password">
+                </div>
+                <button tpye="submit" class="btn"><i class="fas fa-sign-in-alt"></i>Login</button>
+            </form>
+            <div class="col-12 forgot">
+                <a href="#">Forgot Password?</a>
+            </div>
+            <div class="col-12 account">
+                <a href="#">Don't have an account?</a>
+            </div>
+        </div> <!--End of Modal content-->
+    </form>
+    </div>
+</div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+        <p>Copyright Twitter, &copy; 2019</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacy</a></li>
+          <li class="list-inline-item"><a href="#">Terms</a></li>
+          <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+</footer>
+
+</body>
+</html>
