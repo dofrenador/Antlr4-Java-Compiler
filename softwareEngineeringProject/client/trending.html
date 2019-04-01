@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>TweetData</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="shortcut icon" type="image/x-icon" href="Twitter.ico" />
+        <link rel="apple-touch-icon" href="icon.png">
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"> <!-- Google Material Design -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Google Material Icons -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet"> <!-- Google Font -->
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"> <!-- Material Design Lite -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/validate.js"></script>
+    </head>
+
+    <body>
+
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+          <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+
+              <span class="mdl-layout-title">Search</span>
+
+              <div class="mdl-layout-spacer"></div>
+
+              <nav class="mdl-navigation">
+
+                <button id="appBarHam" class="mdl-button mdl-js-button mdl-button--icon">
+                  <i class="material-icons">more_vert</i>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="appBarHam">
+                    <a href="trending.html">
+                        <li class="mdl-menu__item">Refresh</li>
+                    </a>
+                </ul>
+              </nav>
+            </div>
+          </header>
+          <div class="mdl-layout__drawer mdc-drawer">
+            <div class="mdc-drawer__header">
+                <h3 class="mdc-drawer__title">Navigation</h3>
+                <h6 class="mdc-drawer__subtitle">Twitter</h6>
+            </div>
+            <div class="mdc-drawer__content">
+
+                <nav class="mdc-list">
+                    <a class="mdc-list-item" href="index.html" aria-current="page">
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
+                        <span class="mdc-list-item__text">Home</span>
+                    </a>
+                    <a class="mdc-list-item" href="topics.html">
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">format_list_bulleted</i>
+                        <span class="mdc-list-item__text">Topics</span>
+                    </a>
+                    <a class="mdc-list-item mdc-list-item--activated" href="trending.html">
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">search</i>
+                        <span class="mdc-list-item__text">Search</span>
+                    </a>
+                    <a class="mdc-list-item" href="contactadmin.html">
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">contact_mail</i>
+                        <span class="mdc-list-item__text">Contact Admin</span>
+                    </a>
+                </nav>
+
+            </div>
+            </div>
+            <main class="mdl-layout__content" ng-app="UsersApp">
+
+                <div class="page-content" ng-controller="UsersController" align="center">
+
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                      <div class="mdl-tabs__tab-bar">
+                          <a href="#userSearch-panel" class="mdl-tabs__tab is-active" style="text-decoration: none;">User Search</a>
+                          <a href="#tweetSearch-panel" class="mdl-tabs__tab" style="text-decoration: none;">Tweet Search</a>
+                      </div>
+
+                      <div class="mdl-tabs__panel is-active" id="userSearch-panel">
+
+                            <br>
+
+                            <div align="center">
+
+                                <main class="mdl-layout__content">
+
+                                    <div class="input-group" id="searchBar">
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+    										<form ng-submit="search_user();">
+    	                                        <input class="mdl-textfield__input" type="text" id="userSearchBar">
+    										</form>
+
+                                            <label class="mdl-textfield__label" for="userSearchBar">Search</label>
+
+                                        </div>
+
+                                    </div>
+
+                                    <small id="searchHelp" class="form-text text-muted">Enter a search here and press enter</small>
+
+                                </main>
+
+                            </div>
+
+                            <!--User Information-->
+                            <div class="tableWrapper" style="padding: 15px; margin: 15px; overflow-x: scroll;">
+                                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                                  <thead>
+                                    <tr>
+                                      <th class="mdl-data-table__cell--non-numeric">User Name</th>
+                                      <th># of friends</th>
+                                      <th># of followers</th>
+									  <th># of tweets</th>
+                                      <th># of favorites</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr ng-repeat="user in users">
+                                        <th>{{ user.name }}</th>
+                                        <th>{{ user.friends_count }}</th>
+                                        <th>{{ user.followers_count }}</th>
+										<th>{{ user.statuses_count }}</th>
+                                        <th>{{ user.favourites_count }}</th>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+
+                      </div>
+                      <div class="mdl-tabs__panel" id="tweetSearch-panel">
+
+                            <div align="center">
+
+                                <br>
+
+                                <button data-toggle="modal" data-target="#advancedPopup" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="background-color: #03dac5; color: black;">
+                                  Advanced Search
+                                </button>
+
+								<div id="tweet_container">
+		    					</div>
+                            </div>
+						</div>
+                    </div>
+                </div>
+
+
+
+                <footer class="mdl-mini-footer" style="margin-top: 100px;">
+                  <div class="mdl-mini-footer__left-section">
+                    <div class="mdl-logo">Copyright Twitter, © 2019</div>
+                    <ul class="mdl-mini-footer__link-list">
+                      <li><a href="#">Help</a></li>
+                      <li><a href="#">Privacy & Terms</a></li>
+                      <li><a href="#">Support</a></li>
+                    </ul>
+                  </div>
+                </footer>
+
+            </main>
+
+        </div>
+
+        <!-- Popup for advanced search -->
+        <div class="modal fade in" id="advancedPopup" tabindex="-1" role="dialog" aria-labelledby="advancedModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <p id="advancedModalLabel" class="modal-title popup">Advanced Search</p>
+
+                        <button class="mdl-button mdl-js-button mdl-button--icon" data-dismiss="modal" aria-hidden="true">
+                          <i class="material-icons">close</i>
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body"> <!-- Iterates through saved history -->
+                        <form id="advanced_search_form">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="allWord">
+                                <label class="mdl-textfield__label" for="sample3">Search All Words</label>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="phrase">
+                                <label class="mdl-textfield__label" for="sample3">Search Exact Phrase</label>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="excludeWords">
+                                <label class="mdl-textfield__label" for="sample3">Exclude Words</label>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="hashtags">
+                                <label class="mdl-textfield__label" for="sample3">Include Hashtags</label>
+                            </div>
+
+                            <br>
+                            <br>
+
+                            <div class="form-group">
+                                <select class="form-control" id="sel1">
+                                  <option>All Languages</option>
+                                  <option>English</option>
+                                  <option>French</option>
+                                  <option>Italian</option>
+                                  <option>Russian</option>
+                                </select>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="from_these_accounts">
+                                <label class="mdl-textfield__label" for="sample3">From these accounts</label>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="to_these_accounts">
+                                <label class="mdl-textfield__label" for="sample3">To these accounts</label>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="mentioning_these_accounts">
+                                <label class="mdl-textfield__label" for="sample3">Mentioning these accounts</label>
+                            </div>
+
+                            <br>
+
+                            <div>
+                                <input type="date" name="date">
+                            </div>
+
+                        </form>
+
+						<div class="modal-footer">
+
+	                        <button data-dismiss="modal" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="background-color: #fc005c;">
+	                          Dismiss
+	                        </button>   <!-- Dismiss Popup -->
+
+	                        <button data-dismiss="modal" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="background-color: #00b8d3;" onclick="search_tweets()">
+	                          Search
+	                        </button>   <!-- Apply Search -->
+
+	                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+        <script srf="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script> <!-- Google Material Design -->
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script> <!-- Material Design Lite -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+		<script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+		<script src="js/users_app.js"></script>
+		<script src="js/controllers/usersController.js"></script>
+		<script src="js/factories/usersFactory.js"></script>
+		<script src="js/tweet_search.js"></script>
+
+        <script src="js/contact.js"></script>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    </body>
+
+</html>

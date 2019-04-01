@@ -1,0 +1,157 @@
+
+/* ---- MODAL ---- */
+
+/* CSS for the Modals found on the site (think layout, elevation of the modal, etc) */
+
+.modal-content {
+  background-color: #323a45;
+  margin: auto;
+  padding: 25px;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-backdrop {
+    z-index: 100000 !important; /* keeps modal above nav bar */
+}
+
+.modal {
+    z-index: 100001 !important; /* keeps modal above nav bar */
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Misc CSS */
+
+button.fixedbutton {
+    position: fixed;
+    bottom: 8%;
+    right: 7%; 
+}
+
+/* Canvas CSS */
+
+canvas{
+
+  width:115% !important;
+  height:100% !important;
+
+}
+
+p.graphTitle {
+
+  font-family: Roboto;
+  font-size: 25px;
+  color: grey;
+}
+
+/* Material Accordion CSS */
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  font-family: 'Material Icons';
+  content: 'expand_more';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  font-family: 'Material Icons';
+  content: 'expand_less';
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+
+/* General Body/Html CSS */
+
+body, html {
+  height: 100%;
+}
+
+.bg { 
+  
+  background-image: url("mountain.jpg");
+
+  height: 100%; 
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+/* Card Based CSS */
+
+.card_width_dynamic {
+
+  width: 515px !important;
+}
+
+/* Mobile and "Thin Window" Styling */
+@media only screen and (max-width: 640px) {
+  .card_width_dynamic {
+
+    width: 300px !important;
+  }
+
+  canvas{
+
+    width:140% !important;
+    height:150% !important;
+  }
+
+  .tweet{
+    display: block;
+    position: relative;
+    padding: 0 !important;
+  }
+
+}
+
+.tweet{
+  display: inline-block;
+  position: relative;
+  padding: 10px;
+}
+div.tableWrapper{
+  overflow:hidden;
+  overflow-y: scroll;
+  height: 300px;
+}

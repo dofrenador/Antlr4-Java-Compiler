@@ -1,0 +1,199 @@
+h1.darkThemeText {
+    color: white;
+}
+
+h2.darkThemeText {
+    color: white;
+}
+
+button.darkThemeButton {
+    color: white;
+}
+
+th {
+    color: white;
+}
+
+tr {
+    color: white;
+}
+
+
+/*  Above Josh/main.html
+    Below Pablo/index.html */
+
+#webApp{
+    width: 90%;
+    height: auto;
+    margin: 10px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+#sideBar{
+    height: 100vh;
+    width: 200px;
+    background-color: #6CC2EE;
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.block{
+    display: block;
+    padding: 20px;
+    margin: auto;
+    border: 15px;
+}
+
+.bottom{
+    width: 100px;
+}
+
+.inline{
+    display: inline-block;
+    padding: 30px;
+}
+
+
+#sideBarItems{
+    padding: 20px;
+    width: auto;
+    height: auto;
+}
+
+#content{
+    margin-left: 200px;
+    width: 90%;
+    height: auto;
+    align-items: center;
+    position: relative;
+    display: block;
+}
+
+.center{
+    margin: auto;
+}
+
+#chartContainer{
+    width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+#search{
+    width: 75%;
+    height: 40px;
+    position: absolute;
+    align-items: center;
+}
+
+.searchBox{
+    display: inline-block;
+    width: 100%;
+    border-radius: 15px;
+    border: 1px darkblue solid;
+    padding: 5px 5px 5px 25px;
+    position: absolute;
+    margin: auto;
+    -webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
+}
+
+.searchIcon{
+    z-index: 1;
+    position: absolute;
+    top: 10px;
+    left: 5px;
+}
+
+.title, .header{
+    display: block;
+    text-align: center;
+}
+
+.header{
+    padding: 5%;
+}
+
+.form-wrapper{
+    width: 100%;
+}
+
+.formField{
+    width: 75%;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+    position: relative;
+    border: solid 1px #6CC2EE;
+}
+
+.formField:hover{
+border: solid 1px darkblue;
+-webkit-transition-duration: 0.2s; /* Safari */
+transition-duration: 0.2s;
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.focused{
+    border: solid 2px darkblue !important;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.icon {
+    height: 100px;
+    width: 200px;
+    display: inline-block;
+    position: relative;
+    z-index: 10;
+}
+
+.sideBarItem{
+    display: block;
+    text-align: center;
+    position: relative;
+    padding: 10px;
+    margin-top: 40px;
+    color: white;
+}
+
+.sideBarItem:hover{
+    color: #1CA1F0;
+    cursor: pointer;
+}
+
+a:hover{
+    color: #1CA1F0 !important;
+    text-decoration: none !important;
+}
+
+i:hover{
+    cursor: pointer;
+}
+
+.button {
+    background-color: white;
+  color: black;
+  border: 2px solid #6CC2EE;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: #6CC2EE;
+  color: white;
+}
+
+.footer{
+    margin: auto;
+    display: block;
+}
